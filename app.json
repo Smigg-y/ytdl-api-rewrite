@@ -1,0 +1,20 @@
+{
+    "name": "YTDL API",
+    "description": "Node YTDL API",
+    "keywords": [
+      "YouTube",
+      "API",
+      "Node"
+    ],
+    "repository": "https://github.com/jane-doe/small-sharp-tool",
+    "logo": "",
+    "success_url": "/",
+    "buildpacks": [
+      {
+        "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+      },
+      {
+          "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
+      }
+    ]
+  }
