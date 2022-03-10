@@ -5,10 +5,8 @@
   }
   
   body {
-    padding: 80px 100px;
-    font: 13px "Helvetica Neue", "Lucida Grande", "Arial";
+    padding-top: 4.5rem;
     background: #2b2a2a;
-    background-repeat: no-repeat;
     color: rgb(199, 199, 199);
     -webkit-font-smoothing: antialiased;
   }
