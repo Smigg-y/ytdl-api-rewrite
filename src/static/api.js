@@ -13,33 +13,33 @@ function start() {
     };
 
     fetch(`/info?url=${linkvideo}`, requestOptions)
-    .then(response => {
-        if(response.status != 200) {
-            showAlert('error: server did not respond correctly');
+        .then(response => {
+            if (response.status != 200) {
+                showAlert('error: server did not respond correctly');
 
-            console.log(response);
-        } else {
-            response.json().then((data) => {
-                if(!data.success) {
-                    if(data.error.includes('410')) {
-                        return showAlert(('error: this video is restricted'));
+                console.log(response);
+            } else {
+                response.json().then((data) => {
+                    if (!data.success) {
+                        if (data.error.includes('410')) {
+                            return showAlert(('error: this video is restricted'));
+                        };
+
+                        return showAlert(('error: ' + data.error));
                     };
 
-                    return showAlert(('error: '+ data.error));
-                };
-                
-                document.getElementById('form').innerHTML = downloadScreen(data); 
-                showBackBtn();
-            }).catch((err) => {
-                console.log(err);
-                showAlert("error: couldn't get data");
-            });
-        };
-    })
-    .catch(error => {
-        showAlert('error: cannot connect to server');
-        console.log(error);  
-    });
+                    document.getElementById('form').innerHTML = downloadScreen(data);
+                    showBackBtn();
+                }).catch((err) => {
+                    console.log(err);
+                    showAlert("error: couldn't get data");
+                });
+            };
+        })
+        .catch(error => {
+            showAlert('error: cannot connect to server');
+            console.log(error);
+        });
 };
 
 function download(urlType) {
@@ -49,48 +49,48 @@ function download(urlType) {
         method: 'GET',
         redirect: 'follow'
     };
-    
+
     var type = urlType.startsWith('video_') ? 'video' : 'audio';
-    
+
     fetch(`/${type}?url=${linkvideo}&best=true`, requestOptions)
-    .then(response => {
-        if(response.status != 200) {
-            showAlert('error: server did not respond correctly');
+        .then(response => {
+            if (response.status != 200) {
+                showAlert('error: server did not respond correctly');
 
-            console.log(response);
-        } else {
-            response.json().then((data) => {
-                if(!data.success) { 
-                    return showAlert(('error: ', data.error));
-                };
+                console.log(response);
+            } else {
+                response.json().then((data) => {
+                    if (!data.success) {
+                        return showAlert(('error: ', data.error));
+                    };
 
-                console.log(data.file);
+                    console.log(data.file);
 
-                var link = document.createElement('a');
-                link.href = data.file;
-                link.download = (data.file.split('file='))[1];
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+                    var link = document.createElement('a');
+                    link.href = data.file;
+                    link.download = (data.file.split('file='))[1];
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
 
-                document.getElementById('divDownload').innerHTML = '';
-                document.getElementById('divDownload').innerHTML = `
+                    document.getElementById('divDownload').innerHTML = '';
+                    document.getElementById('divDownload').innerHTML = `
                 <div class="alert alert-success" role="alert">
                     <span class="material-icons">done</span>
                 </div>`;
 
-                delay(5000)
-                .then(() => {
-                    window.location.reload();
+                    delay(5000)
+                        .then(() => {
+                            window.location.reload();
+                        });
+                }).catch((err) => {
+                    showAlert("error: couldn't get data")
                 });
-            }).catch((err) => {
-                showAlert("error: couldn't get data")
-            });
-        };
-    })
-    .catch(error => {
-        showAlert("error: couldn't connect to server");
-    });
+            };
+        })
+        .catch(error => {
+            showAlert("error: couldn't connect to server");
+        });
 };
 
 function loadingBtn(id) {
@@ -113,12 +113,12 @@ function delay(time) {
 function showAlert(msg) {
     document.getElementById('error').innerText = msg;
     document.getElementById('error').style.display = 'block';
-     
+
     delay(8000)
-    .then(() => {
-        document.getElementById('error').innerText = '';
-        document.getElementById('error').style.display = 'none';
-    });
+        .then(() => {
+            document.getElementById('error').innerText = '';
+            document.getElementById('error').style.display = 'none';
+        });
 };
 
 function downloadScreen(data) {
@@ -140,7 +140,7 @@ function downloadScreen(data) {
     <p type="button" class="btn btn-lg mt-2 text-light" id="bootback" onClick="window.location.reload();">Back</p>`;
 };
 
-function sToTime(duration) {   
+function sToTime(duration) {
     // Hours, minutes and seconds
     var hrs = ~~(duration / 3600);
     var mins = ~~((duration % 3600) / 60);
