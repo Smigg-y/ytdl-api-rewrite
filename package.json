@@ -8,7 +8,6 @@
   },
   "author": "",
   "dependencies": {
-    "axios": "^0.26.0",
     "express": "^4.17.3",
     "fluent-ffmpeg": "^2.1.2",
     "serve-index": "^1.9.1",
