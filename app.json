@@ -6,7 +6,7 @@
       "API",
       "Node"
     ],
-    "repository": "https://github.com/jane-doe/small-sharp-tool",
+    "repository": "https://github.com/Smigg-y/ytdl-api-rewrite",
     "logo": "",
     "success_url": "/",
     "buildpacks": [
