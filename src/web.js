@@ -12,7 +12,7 @@ const getRandom = () => {
 const myhost = async (req) => {
     myurl = req.headers.host;
     try {
-        return (`http://${req.headers.host}`);
+        return (`https://${req.headers.host}`);
     } catch (error) {
         return (`http://${req.headers.host}`);
     };
