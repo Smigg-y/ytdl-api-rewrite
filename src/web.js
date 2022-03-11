@@ -18,8 +18,8 @@ const myhost = async (req) => {
     };
 };
 
-process.env.FFMPEG_PATH = 'C:\\Users\\44778\\Desktop\\ffmpeg-2022-03-07-git-e645a1ddb9-essentials_build\\bin\\ffmpeg.exe';
-process.env.FFPROBE_PATH = 'C:\\Users\\44778\\Desktop\\ffmpeg-2022-03-07-git-e645a1ddb9-essentials_build\\bin\\ffprobe.exe';
+//process.env.FFMPEG_PATH = 'C:\\Users\\44778\\Desktop\\ffmpeg-2022-03-07-git-e645a1ddb9-essentials_build\\bin\\ffmpeg.exe';
+//process.env.FFPROBE_PATH = 'C:\\Users\\44778\\Desktop\\ffmpeg-2022-03-07-git-e645a1ddb9-essentials_build\\bin\\ffprobe.exe';
 const port = process.env.PORT || 3000;
 
 app.set('json spaces', 4);
