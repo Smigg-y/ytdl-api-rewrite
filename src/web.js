@@ -11,15 +11,10 @@ const getRandom = () => {
 
 const myhost = async (req) => {
     myurl = req.headers.host;
-    let url = '';
     try {
-        url = (`https://${req.headers.host}`);
-        return url
+        return (`https://${req.headers.host}`);
     } catch (error) {
-        url = (`http://${req.headers.host}`);
-        return url
-    } finally {
-        return url;
+        return (`http://${req.headers.host}`);
     };
 };
 
@@ -85,10 +80,6 @@ app.get('/audio', async function (req, res) {
         res.json({
             "success": false, "error": e.message
         });
-    } finally {
-        res.json({
-            "success": false, "error": "finally moment"
-        });
     };
 });
 
@@ -129,10 +120,6 @@ app.get('/video', async function (req, res) {
     } catch (e) {
         res.json({
             "success": false, "error": e.message
-        });
-    } finally {
-        res.json({
-            "success": false, "error": "finally moment"
         });
     };
 });
@@ -184,9 +171,5 @@ async function getInfo(url) {
         return {
             "success": false, "error": error.message
         };
-    } finally {
-        res.json({
-            "success": false, "error": "finally moment"
-        });
     };
 };
